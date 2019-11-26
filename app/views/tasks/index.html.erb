@@ -1,0 +1,26 @@
+<h1>My tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Completed</th>
+      <th>Name</th>
+      <th>Destroy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.completed %></td>
+        <td><%= task.details %></td>
+        <td><%= link_to "#{task.title}", "/tasks/#{task.id}" %></td>
+        <td><%= link_to "destroy", task_path(task.id), method: :delete %></td>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "add a new task",  new_task_path %>
+
+<br>
